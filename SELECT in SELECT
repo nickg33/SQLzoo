@@ -23,10 +23,27 @@ WHERE name ='Argentina' OR name ='Australia'
 ORDER BY name
 
 4-
+SELECT name,population
+FROM world
+WHERE population>
+(
+SELECT population  FROM world
+WHERE name='Canada')
+AND population <
+(
+SELECT population FROM
+world WHERE name ='Poland')
 
 
 
-5
+5-
+SELECT name, concat
+(round ((population*100) /
+(SELECT population FROM world  WHERE name='Germany'),
+ 0),
+'%')
+FROM world
+WHERE continent ='Europe'
 
 6
 
